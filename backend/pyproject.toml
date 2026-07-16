@@ -13,8 +13,12 @@ dependencies = [
     "pydantic-settings>=2.6.0",
     "pydantic[email]>=2.9.0",
     "pyjwt>=2.10.0",
+    "passlib[bcrypt]>=1.7.4",
     "python-multipart>=0.0.17",
-    "bcrypt>=5.0.0",
+    "python-frontmatter>=1.1.0",
+    "httpx>=0.27.0",
+    "apscheduler>=3.10.4",
+    "tzdata>=2024.1",
 ]
 
 [tool.uv]

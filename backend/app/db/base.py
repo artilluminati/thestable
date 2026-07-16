@@ -12,3 +12,5 @@ class Base(DeclarativeBase):
 # without creating circular imports between base.py and the models.
 # from app.models.user import User  # noqa: E402, F401
 # from app.models.short_url import ShortUrl  # noqa: E402, F401
+# from app.models.notes_index import NotesIndex  # noqa: E402, F401
+# from app.models.reminder_log import ReminderLog  # noqa: E402, F401

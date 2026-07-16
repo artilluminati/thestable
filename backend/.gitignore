@@ -3,3 +3,8 @@ __pycache__/
 .venv/
 .env
 .ruff_cache/
+
+# The vault is your personal data, not app code - it deserves its own git
+# history (or none at all), separate from this repo. Remove this line if
+# you'd rather keep notes versioned together with the backend for now.
+vault/

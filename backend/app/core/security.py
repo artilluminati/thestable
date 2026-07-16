@@ -1,29 +1,19 @@
 from datetime import datetime, timedelta, timezone
 
 import jwt
-import bcrypt
+from passlib.context import CryptContext
 
 from app.core.config import settings
 
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 
 def hash_password(password: str) -> str:
-    # Переводим строку в байты
-    password_bytes = password.encode('utf-8')
-    # Генерируем соль и хэшируем
-    salt = bcrypt.gensalt()
-    hashed_bytes = bcrypt.hashpw(password_bytes, salt)
-    # Возвращаем хэш в виде обычной строки для сохранения в БД
-    return hashed_bytes.decode('utf-8')
+    return pwd_context.hash(password)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    try:
-        return bcrypt.checkpw(
-            plain_password.encode('utf-8'), 
-            hashed_password.encode('utf-8')
-        )
-    except Exception:
-        return False
+    return pwd_context.verify(plain_password, hashed_password)
 
 
 def create_access_token(subject: str, expires_delta: timedelta | None = None) -> str:
