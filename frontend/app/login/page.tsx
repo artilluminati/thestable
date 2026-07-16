@@ -1,9 +1,9 @@
 import { LoginForm } from "@/components/login-form";
 
 export default function LoginPage() {
-  return (
-    <main className="flex min-h-screen items-center justify-center bg-neutral-50 px-4">
-      <LoginForm />
-    </main>
-  );
+    return (
+        <main className="flex min-h-screen items-center justify-center bg-mist-950 px-4">
+            <LoginForm />
+        </main>
+    );
 }

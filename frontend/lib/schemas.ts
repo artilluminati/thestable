@@ -24,3 +24,18 @@ export const createUrlSchema = z.object({
 export type LoginInput = z.infer<typeof loginSchema>;
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type CreateUrlInput = z.infer<typeof createUrlSchema>;
+
+export const createNoteSchema = z.object({
+  path: z
+    .string()
+    .min(1, "Введите путь к заметке")
+    .refine((v) => !v.startsWith("/") && !v.includes(".."), "Некорректный путь"),
+  content: z.string(),
+});
+
+export const updateNoteSchema = z.object({
+  content: z.string(),
+});
+
+export type CreateNoteInput = z.infer<typeof createNoteSchema>;
+export type UpdateNoteInput = z.infer<typeof updateNoteSchema>;
