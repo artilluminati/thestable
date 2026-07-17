@@ -39,14 +39,19 @@ export function NoteCreateForm() {
         <div className="space-y-1">
           <Label htmlFor="path">Путь (например, projects/idea - .md допишется сам)</Label>
           <Input id="path" placeholder="ideas" {...register("path")} />
-          {errors.path && <p className="text-sm text-red-500">{errors.path.message}</p>}
+          {errors.path && <p className="text-sm text-red-400">{errors.path.message}</p>}
         </div>
         <div className="space-y-1">
           <Label htmlFor="content">Содержимое</Label>
-          <Textarea id="content" rows={12} placeholder="# Заголовок&#10;&#10;Текст заметки..." {...register("content")} />
+          <Textarea
+            id="content"
+            rows={12}
+            placeholder="# Заголовок&#10;&#10;Текст заметки..."
+            {...register("content")}
+          />
         </div>
         {createNote.isError && (
-          <p className="text-sm text-red-500">{(createNote.error as Error).message}</p>
+          <p className="text-sm text-red-400">{(createNote.error as Error).message}</p>
         )}
         <Button type="submit" disabled={createNote.isPending}>
           {createNote.isPending ? "Создание..." : "Создать заметку"}

@@ -32,11 +32,11 @@ export function NotesList() {
       </div>
 
       {(isLoading || (isSearchMode && isSearching)) && (
-        <p className="text-sm text-neutral-500">Загрузка...</p>
+        <p className="text-sm text-neutral-400">Загрузка...</p>
       )}
 
       {!isLoading && notes && notes.length === 0 && (
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm text-neutral-400">
           {isSearchMode ? "Ничего не найдено" : "Пока нет ни одной заметки"}
         </p>
       )}
@@ -44,8 +44,8 @@ export function NotesList() {
       <div className="space-y-2">
         {notes?.map((note) => (
           <Link key={note.path} href={`/dashboard/notes/${encodeNotePath(note.path)}`}>
-            <Card className="p-4 transition-colors hover:bg-neutral-50">
-              <p className="font-medium text-neutral-900">{note.title}</p>
+            <Card className="p-4 transition-colors hover:bg-neutral-800">
+              <p className="font-medium text-neutral-100">{note.title}</p>
               <p className="text-sm text-neutral-500">{note.path}</p>
             </Card>
           </Link>

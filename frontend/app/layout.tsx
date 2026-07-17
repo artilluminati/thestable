@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Climate_Crisis } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -11,6 +11,10 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
+});
+
+const climateCrisisSans = Climate_Crisis({
+    variable: "--font-climate-crisis-sans",
 });
 
 export const metadata: Metadata = {

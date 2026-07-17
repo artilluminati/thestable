@@ -12,45 +12,82 @@ import { useRegister } from "@/hooks/use-auth";
 import { registerSchema, type RegisterInput } from "@/lib/schemas";
 
 export function RegisterForm() {
-  const registerUser = useRegister();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<RegisterInput>({ resolver: zodResolver(registerSchema) });
+    const registerUser = useRegister();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<RegisterInput>({ resolver: zodResolver(registerSchema) });
 
-  return (
-    <Card className="w-full max-w-sm p-6">
-      <h1 className="mb-6 text-xl font-semibold">Регистрация</h1>
-      <form onSubmit={handleSubmit((data) => registerUser.mutate(data))} className="space-y-4">
-        <div className="space-y-1">
-          <Label htmlFor="username">Имя пользователя</Label>
-          <Input id="username" {...register("username")} />
-          {errors.username && <p className="text-sm text-red-500">{errors.username.message}</p>}
-        </div>
-        <div className="space-y-1">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" {...register("email")} />
-          {errors.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
-        </div>
-        <div className="space-y-1">
-          <Label htmlFor="password">Пароль</Label>
-          <Input id="password" type="password" {...register("password")} />
-          {errors.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
-        </div>
-        {registerUser.isError && (
-          <p className="text-sm text-red-500">{(registerUser.error as Error).message}</p>
-        )}
-        <Button type="submit" className="w-full" disabled={registerUser.isPending}>
-          {registerUser.isPending ? "Создание..." : "Зарегистрироваться"}
-        </Button>
-      </form>
-      <p className="mt-4 text-center text-sm text-neutral-500">
-        Уже есть аккаунт?{" "}
-        <Link href="/login" className="text-neutral-900 underline">
-          Войти
-        </Link>
-      </p>
-    </Card>
-  );
+    return (
+        <Card className="w-full max-w-sm p-6">
+            <div className="mb-6 flex items-center gap-2">
+                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-emerald-500 text-sm font-bold text-neutral-950">
+                    P
+                </div>
+                <h1 className="text-lg font-black font-climate-crisis-sans text-neutral-100">
+                    Регистрация
+                </h1>
+            </div>
+            <form
+                onSubmit={handleSubmit((data) => registerUser.mutate(data))}
+                className="space-y-4"
+            >
+                <div className="space-y-1">
+                    <Label htmlFor="username">Имя пользователя</Label>
+                    <Input id="username" {...register("username")} />
+                    {errors.username && (
+                        <p className="text-sm text-red-400">
+                            {errors.username.message}
+                        </p>
+                    )}
+                </div>
+                <div className="space-y-1">
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" {...register("email")} />
+                    {errors.email && (
+                        <p className="text-sm text-red-400">
+                            {errors.email.message}
+                        </p>
+                    )}
+                </div>
+                <div className="space-y-1">
+                    <Label htmlFor="password">Пароль</Label>
+                    <Input
+                        id="password"
+                        type="password"
+                        {...register("password")}
+                    />
+                    {errors.password && (
+                        <p className="text-sm text-red-400">
+                            {errors.password.message}
+                        </p>
+                    )}
+                </div>
+                {registerUser.isError && (
+                    <p className="text-sm text-red-400">
+                        {(registerUser.error as Error).message}
+                    </p>
+                )}
+                <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={registerUser.isPending}
+                >
+                    {registerUser.isPending
+                        ? "Создание..."
+                        : "Зарегистрироваться"}
+                </Button>
+            </form>
+            <p className="mt-4 text-center text-sm text-neutral-500">
+                Уже есть аккаунт?{" "}
+                <Link
+                    href="/login"
+                    className="text-emerald-400 hover:text-emerald-300"
+                >
+                    Войти
+                </Link>
+            </p>
+        </Card>
+    );
 }

@@ -10,11 +10,11 @@ export function RemindersList() {
   const { data: reminders, isLoading, isError } = useReminders();
   const testReminder = useTestReminder();
 
-  if (isLoading) return <p className="text-sm text-neutral-500">Загрузка...</p>;
-  if (isError) return <p className="text-sm text-red-500">Не удалось загрузить напоминания</p>;
+  if (isLoading) return <p className="text-sm text-neutral-400">Загрузка...</p>;
+  if (isError) return <p className="text-sm text-red-400">Не удалось загрузить напоминания</p>;
   if (!reminders || reminders.length === 0) {
     return (
-      <p className="text-sm text-neutral-500">
+      <p className="text-sm text-neutral-400">
         В vault/reminders пока нет ни одного файла с расписанием
       </p>
     );
@@ -26,11 +26,11 @@ export function RemindersList() {
         <Card key={reminder.path} className="flex items-center justify-between gap-4 p-4">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <p className="font-medium text-neutral-900">{reminder.title}</p>
+              <p className="font-medium text-neutral-100">{reminder.title}</p>
               <Badge>{scheduleTypeLabel(reminder.schedule.type)}</Badge>
             </div>
-            <p className="text-sm text-neutral-500">{formatSchedule(reminder.schedule)}</p>
-            <p className="text-xs text-neutral-400">{reminder.path}</p>
+            <p className="text-sm text-neutral-400">{formatSchedule(reminder.schedule)}</p>
+            <p className="text-xs text-neutral-500">{reminder.path}</p>
           </div>
           <Button
             variant="ghost"
@@ -44,10 +44,10 @@ export function RemindersList() {
         </Card>
       ))}
       {testReminder.isError && (
-        <p className="text-sm text-red-500">{(testReminder.error as Error).message}</p>
+        <p className="text-sm text-red-400">{(testReminder.error as Error).message}</p>
       )}
       {testReminder.isSuccess && (
-        <p className="text-sm text-green-600">Тестовое сообщение отправлено в Telegram</p>
+        <p className="text-sm text-emerald-400">Тестовое сообщение отправлено в Telegram</p>
       )}
     </div>
   );

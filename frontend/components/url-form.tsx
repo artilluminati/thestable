@@ -30,14 +30,14 @@ export function UrlForm() {
           <Label htmlFor="original_url">Ссылка</Label>
           <Input id="original_url" placeholder="https://example.com" {...register("original_url")} />
           {errors.original_url && (
-            <p className="text-sm text-red-500">{errors.original_url.message}</p>
+            <p className="text-sm text-red-400">{errors.original_url.message}</p>
           )}
         </div>
         <div className="w-full space-y-1 sm:w-40">
           <Label htmlFor="custom_alias">Алиас (не обязательно)</Label>
           <Input id="custom_alias" placeholder="my-link" {...register("custom_alias")} />
           {errors.custom_alias && (
-            <p className="text-sm text-red-500">{errors.custom_alias.message}</p>
+            <p className="text-sm text-red-400">{errors.custom_alias.message}</p>
           )}
         </div>
         <Button type="submit" disabled={createUrl.isPending}>
@@ -45,7 +45,7 @@ export function UrlForm() {
         </Button>
       </form>
       {createUrl.isError && (
-        <p className="mt-2 text-sm text-red-500">{(createUrl.error as Error).message}</p>
+        <p className="mt-2 text-sm text-red-400">{(createUrl.error as Error).message}</p>
       )}
     </Card>
   );
