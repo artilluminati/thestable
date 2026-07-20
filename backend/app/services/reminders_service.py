@@ -72,9 +72,17 @@ def get_reminder(relative_path: str) -> ParsedReminder:
     return parsed
 
 
-def _parse_time(value: str) -> dtime:
+def _parse_time(value) -> dtime:
+    # Превращаем в строку, если пришло число (например, 12 -> "12")
+    if isinstance(value, int):
+        value = str(value)
+        
+    # Если время пришло как число без минут (например, "12"), добавляем минуты
+    if ":" not in value:
+        value = f"{value}:00"
+        
     hour, minute = value.split(":")
-    return dtime(hour=int(hour), minute=int(minute))
+    return dtime(int(hour), int(minute))
 
 
 def _matches_now(schedule: dict, now: datetime) -> tuple[bool, str | None]:

@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useLogin } from "@/hooks/use-auth";
+import { Logo } from "@/components/ui/logo";
 import { loginSchema, type LoginInput } from "@/lib/schemas";
 
 export function LoginForm() {
@@ -25,9 +26,7 @@ export function LoginForm() {
     return (
         <Card className="w-full max-w-sm p-6">
             <div className="mb-6 flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-emerald-500 text-sm font-bold text-neutral-950">
-                    P
-                </div>
+                <Logo className="flex p-1 items-center justify-center rounded-md bg-neutral-950 text-sm font-bold text-neutral-950" />
                 <h1 className="text-lg font-black font-climate-crisis-sans text-neutral-100">
                     Вход
                 </h1>

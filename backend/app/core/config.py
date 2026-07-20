@@ -16,7 +16,7 @@ class Settings(BaseSettings):
 
     database_url: str
 
-    frontend_origin: str = "http://localhost:3000"
+    frontend_origins: list[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
 
     # Notes module: path is relative to the process's working directory
     # (i.e. relative to backend/ when you run uvicorn from there, or to
